@@ -1,0 +1,13 @@
+﻿@model HomeViewModel
+
+<h1>Ноутбуки:</h1>
+<div class="row mt-5 mb-2">
+    @{
+        foreach (Laptop laptop in Model.FavLaptops)
+        {
+            @Html.Partial("AllLaptops", laptop)
+        }
+    }
+</div>
+
+

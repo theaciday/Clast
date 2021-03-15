@@ -1,0 +1,10 @@
+﻿<h1>Все ноутбуки:</h1>
+<h3>@Model.LaptopCategory</h3>
+<div class="row mt-5 mb-2">
+    @{
+        foreach (Laptop laptop in Model.AllLaptops)
+        { 
+            @Html.Partial("AllLaptops",laptop)
+        }
+    }
+</div> 
