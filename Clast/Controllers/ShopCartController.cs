@@ -15,6 +15,7 @@ namespace Clast.Controllers
         private readonly ILaptop _laptoprep;
         private readonly ShopCart _shopCart;
 
+        public ShopCartController(ILaptop laptoprep,ShopCart shopCart)
         public ShopCartController(ILaptop laptoprep, ShopCart shopCart)
         {
             _shopCart = shopCart;
