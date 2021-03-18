@@ -8,6 +8,6 @@ namespace Clast.Data.Interfaces
 {
     public interface IAllOrders
     {
-        void createOrder(Order order);
+        void СreateOrder(Order order);
     }
 }

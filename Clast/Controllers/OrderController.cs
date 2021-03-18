@@ -17,12 +17,33 @@ namespace Clast.Controllers
 
         public OrderController(IAllOrders allOrders, ShopCart shopCart)
         {
-            this.allorders = allOrders;
-            this.shopCart = shopCart;
+            allorders = allOrders;
+            this.shopCart = shopCart;            
         }
-        public IActionResult CheckOut() 
+        public IActionResult Checkout() 
         {
 
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Checkout(Order order)
+        {
+            shopCart.ListItems = shopCart.GetItems();
+            if (shopCart.ListItems.Count == 0)
+            {
+                ModelState.AddModelError("", "Cart cant be empty!");
+            }
+            else if (ModelState.IsValid)
+            {
+                allorders.СreateOrder(order);
+                return RedirectToAction("Complete  ");
+            }
+            return View();
+        }
+        public IActionResult Complete()
+        {
+            ViewBag.Message = "Order is sucсessful processed ";
             return View();
         }
     }

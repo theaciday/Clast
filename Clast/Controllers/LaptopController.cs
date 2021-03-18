@@ -20,18 +20,17 @@ namespace Clast.Controllers
             _laptopCategory = laptopCategory;
         }
 
-        [Route("Laptops/List")]
-        [Route("Laptops/List/{category}")]
+        [Route("Laptop/List")]
+        [Route("Laptop/List/{category}")]
         public ViewResult List(string category)
-        {
+        { 
             string _category = category;
             IEnumerable<Laptop> llaptops=null;
             string laptopCategory = "";
             if (string.IsNullOrEmpty(category))
             {
                 llaptops = _allLaptop.Laptops.OrderBy(i => i.Id);
-
-            }
+            } 
             else
             {
                 if (string.Equals("gaming", category, StringComparison.OrdinalIgnoreCase))
@@ -44,17 +43,12 @@ namespace Clast.Controllers
                     llaptops = _allLaptop.Laptops.Where(i => i.LaptopCategory.CategoryName.Equals("Бизнес-ноутбук")).OrderBy(i => i.Id);
                     laptopCategory = "Бизнес-ноутбук";
                 }
-                laptopCategory = _category;
-
-
             }
             var laptopObject = new LaptopListViewModel
             {
                 AllLaptops = llaptops,
                 LaptopCategory = laptopCategory,
-
             };
-
             ViewBag.Title = "Ноутбуки";
             return View(laptopObject);
         }

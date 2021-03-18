@@ -17,7 +17,7 @@ namespace Clast.Data.Repository
             this.appDbContext = appDbContext;
             this.shopCart = shopCart;
         }
-        public void createOrder(Order order)
+        public void СreateOrder(Order order)
         {
             order.OrderTime = DateTime.Now;
             appDbContext.Order.Add(order);
